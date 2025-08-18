@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from functools import lru_cache
 
 import pandas as pd
 from dash import Dash, html, dcc
@@ -21,6 +22,16 @@ def load_data(csv_path=DATA_PATH):
     df["fecha"] = pd.to_datetime(df["fecha"], errors="raise")
     df = df.set_index("fecha").sort_index()
     return df
+
+
+@lru_cache(maxsize=1)
+def get_cached_data(csv_path=str(DATA_PATH)):
+    """Nueva función para cargar datos con caché.
+
+    Envuelve `load_data` y mantiene el resultado en memoria para evitar
+    recargas repetidas cuando se reconstruye el layout.
+    """
+    return load_data(Path(csv_path))
 
 
 def create_app(dataframe):
@@ -55,7 +66,7 @@ def create_app(dataframe):
 
 
 if __name__ == "__main__":
-    df = load_data()
+    df = get_cached_data()
     app = create_app(df)
     # Escucha en 0.0.0.0 para facilitar despliegue; localmente use http://127.0.0.1:8050
     app.run_server(debug=True, host="0.0.0.0", port=int(os.getenv("PORT", 8050)))
