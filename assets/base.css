@@ -1,0 +1,6 @@
+/* Estilos base */
+:root {
+  --brand-color: #0f766e;
+}
+body { margin: 0; background: #fafafa; color: #111827; }
+h1, h2, h3 { color: var(--brand-color); }
