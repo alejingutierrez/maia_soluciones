@@ -95,7 +95,7 @@ def update_stats(figure):
         for col in numeric_cols[:3]:  # Mostrar solo las primeras 3 columnas numéricas
             stats.append(html.Div([
                 html.Strong(f"{col}: "),
-                html.Span(f"Min: {df[col].min():.2f}, Max: {df[col].max():.2f}, Prom: {df[col].mean():.2f}")
+                html.Span(f"Min: {df[col].min():.2f}, Max: {df[col].max():.2f}, Prom: {df[col].mean():.2f}, Med: {df[col].median():.2f}")
             ], style={'margin': '5px 0'}))
         return stats
     else:
