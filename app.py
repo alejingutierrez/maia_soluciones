@@ -56,7 +56,7 @@ df = load_data()
 
 # Layout de la aplicación
 app.layout = html.Div([
-    html.H1("Dashboard de Energía", style={'textAlign': 'center', 'color': '#2c3e50'}),
+    html.H1("⚡ Dashboard de Energía - Análisis en Tiempo Real", style={'textAlign': 'center', 'color': '#2c3e50', 'fontSize': '2.5em', 'marginBottom': '20px'}),
     
     html.Div([
         html.H3("Datos de Consumo Energético", style={'color': '#34495e'}),
