@@ -133,6 +133,18 @@ $ python3 -V
 Python 3.9.6
 ```
 
+### Ejecución en segundo plano (opcional)
+Para levantar con gunicorn y dejarlo ejecutando en segundo plano:
+```bash
+source .venv/bin/activate
+nohup gunicorn -w 2 -b 127.0.0.1:8050 app:server > server.log 2>&1 & echo $! > server.pid
+```
+Detener el servicio:
+```bash
+kill $(cat server.pid)
+```
+URL utilizada para la captura del tablero: `http://127.0.0.1:8050`
+
 ### Capturas sugeridas
 - `git --version`, `git config` (name/email)
 - `git log --oneline`
