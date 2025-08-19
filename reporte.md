@@ -68,3 +68,15 @@ python app.py
 - `git log --oneline`
 - Repositorio en GitHub mostrando archivos y ramas `main` y `master`
 - Tablero ejecutándose en `http://127.0.0.1:8050`
+
+## 6. Push por HTTPS con PAT (según taller)
+1) Generar token (PAT): Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token (classic). Scopes: `repo`. Copie el token.
+2) Configurar helper de credenciales en macOS:
+```bash
+git config --global credential.helper osxkeychain
+```
+3) Hacer push a `master` por HTTPS:
+```bash
+git push -u origin master
+```
+En Username use su usuario de GitHub y en Password pegue el token (PAT).
